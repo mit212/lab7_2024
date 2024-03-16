@@ -175,4 +175,8 @@ Before you leave, please fill out https://tinyurl.com/212-feedback.
 |:---------------------------------------------------|
 | Show the feedback form completion screen to a TA or LA. |
 
-[^1]: Version 1 - 2024: Joseph Ntaimo, Jinger Chong, Josh Sohn
+[^1]: Version 1 - 2016: Peter Yu, Ryan Fish and Kamal Youcef-Toumi  
+  Version 2 - 2017: Yingnan Cui and Kamal Youcef-Toumi  
+  Version 3 - 2019: Jerry Ng  
+  Version 4 - 2023: Joseph Ntaimo, Kentaro Barhydt, Ravi Tejwani, Kamal Youcef-Toumi and Harrison Chin  
+  Version 5 - 2024: Jinger Chong, Josh Sohn
