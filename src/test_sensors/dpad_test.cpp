@@ -6,6 +6,8 @@
 
 #define SEESAW_ADDR 0x49
 
+// TODO: This code is not validated.
+
 DPad dPad(SEESAW_ADDR);
 
 void setup() {

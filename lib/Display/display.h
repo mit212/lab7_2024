@@ -2,9 +2,11 @@
 #define DISPLAY_H
 
 #include <stdint.h>
-#include <vector>
 #include <Adafruit_HX8357.h>
 #include <Adafruit_FT5336.h>
+#include <Arduino.h>
+
+// TODO: Fix serial print
 
 #define DISPLAY_WIDTH 480
 #define DISPLAY_HEIGHT 320
@@ -32,15 +34,15 @@ private:
     TS_Point _pts[FT5336_MAXTOUCHES];
 
     bool _setupPrintCleared;
-    std::vector<TouchReading> _currReading;
+    TouchReading _currReading;
 
 public:
     Display(int csPin, int dcPin, int ctpAddr = FT53XX_DEFAULT_ADDR);
     void setup();
-    std::vector<TouchReading> read(bool debugPrint = false, int penRadius = 0, int penColor = HX8357_WHITE);
+    TouchReading read(bool debugPrint = false, int penRadius = 0, int penColor = HX8357_WHITE);
 
     void clear(int bgColor = HX8357_BLACK);
-    void drawTouches(int penRadius = 0, int penColor = HX8357_WHITE);
+    void drawTouch(int penRadius = 0, int penColor = HX8357_WHITE);
     void fillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
     void drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
     void fillCircle(int16_t x, int16_t y, int16_t r, uint16_t color);

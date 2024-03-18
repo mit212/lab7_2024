@@ -42,7 +42,7 @@ void loop() {
         controllerMessage.dPad = dPad.read();
         controllerMessage.buttonL = buttonL.read();
         controllerMessage.buttonR = buttonR.read();
-        controllerMessage.touchPoints = display.read();
+        controllerMessage.touchPoint = display.read();
         
         if (!(prevControllerMessage == controllerMessage)) {
             // update display

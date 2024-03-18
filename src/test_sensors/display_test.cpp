@@ -4,13 +4,13 @@
 
 #define PRINT_DELAY 50
 
-#define TFT_CS_PIN 9
-#define TFT_DC_PIN 10
+#define TFT_CS_PIN 12
+#define TFT_DC_PIN 13
 
 Display display(TFT_CS_PIN, TFT_DC_PIN);
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin();
     display.setup();
     Serial.println("Setup complete.");
 }

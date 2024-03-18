@@ -10,8 +10,7 @@ void TouchReading::print(uint8_t nTabs) {
 
 bool TouchReading::operator==(const TouchReading& other) {
     return x == other.x &&
-           y == other.y &&
-           pressure == other.pressure;
+           y == other.y;
 }
 
 Display::Display(int csPin, int dcPin, int ctpAddr) :
@@ -22,48 +21,38 @@ void Display::setup() {
     _tft.begin();
 
     if (! _ctp.begin(_ctpAddr, &Wire)) { 
-        Serial.println("Couldn't start FT5336 touchscreen controller.");
+        if (Serial) Serial.println("Couldn't start FT5336 touchscreen controller.");
         while (1) delay(10);
     }
 
     clear();
+    setRotation(1); 
     setTextColor(HX8357_WHITE);
     setTextSize(DEFAULT_TEXT_SIZE);
-    setCursor(10, 10);  
+    setCursor(15, 15);  
     print("setup complete!"); 
     _setupPrintCleared = false;
 }
 
-std::vector<TouchReading> Display::read(bool debugPrint, int penRadius, int penColor) {
-    _currReading.clear();
-
+TouchReading Display::read(bool debugPrint, int penRadius, int penColor) {
     uint8_t touches = _ctp.touched();
-    if (! touches) 
+    if (! touches) {
+        _currReading.pressure = -1;
         return _currReading;
-    
-    _ctp.getPoints(_pts, FT5336_MAXTOUCHES);
-    
-    for (int i=0; i < FT5336_MAXTOUCHES; i++) {
-        // Check if z (pressure) is zero, skip if so
-        if (_pts[i].z == 0) continue;
-
-        TouchReading touch;
-        touch.x = _pts[i].x;
-        touch.y = _pts[i].y;
-        touch.pressure = _pts[i].z;
-        _currReading.push_back(touch);        
     }
+    
+    _ctp.getPoints(_pts, 1);
+    
+    _currReading.x = _pts[0].y;
+    _currReading.y = _pts[0].x;
+    _currReading.pressure = _pts[0].z;
 
-    if (debugPrint && Serial && _currReading.size() > 0) {
+    if (debugPrint && Serial && _currReading.pressure > 0) {
         Serial.printf("Read display with touchscreen at I2C address 0x%x\n", _ctpAddr);
+        _currReading.print();
     }
 
-    if (debugPrint && Serial) {
-        for (auto touch : _currReading) 
-            touch.print();
-    }
-
-    drawTouches(penRadius, penColor);
+    drawTouch(penRadius, penColor);
     return _currReading;    
 }
 
@@ -72,13 +61,12 @@ void Display::clear(int bgColor) {
     _setupPrintCleared = true;
 }
 
-void Display::drawTouches(int penRadius, int penColor) {
-    if (penRadius > 0) {
+void Display::drawTouch(int penRadius, int penColor) {
+    if (penRadius > 0 && _currReading.pressure > 0) {
         // If setup message is still printed on the screen
         if (!_setupPrintCleared) 
             clear();
-        for (auto touch : _currReading) 
-            fillCircle(touch.x, touch.y, penRadius, penColor);
+        fillCircle(_currReading.x, _currReading.y, penRadius, penColor);
     }
 }
 

@@ -2,10 +2,10 @@
 #include "util.h"
 #include <Arduino.h>
 
-#define PRINT_DELAY 50
+#define PRINT_DELAY 250
 
-#define X_PIN A0
-#define Y_PIN A1
+#define X_PIN A2
+#define Y_PIN A3
 
 Joystick joystick(X_PIN, Y_PIN);
 

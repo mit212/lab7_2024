@@ -6,7 +6,7 @@ Spring 2024[^1]
 <details>
   <summary>Table of Contents</summary>
 
-- [1 Changing PlatformIO Environment](#1-changing-platformio-environment)
+- [0 (Prelab) Odometry Equations](#0-prelab-odometry-equations)
 - [2 Controller](#2-controller)
   - [2.1 Microcontroller Validation](#21-microcontroller-validation)
   - [2.2 Joystick Wiring](#22-joystick-wiring)
@@ -28,7 +28,8 @@ Spring 2024[^1]
 
 In this lab, you will be working together as a small team to drive a mobile robot! Some parts of this lab can be performed in parallel, so feel free to skim through the handout and delegate to get through the lab faster.
 
-## 1 Changing PlatformIO Environment
+## 0 (Prelab) Odometry Equations
+
 Estimated time of completion: 5 min
 
 Clone this repository.

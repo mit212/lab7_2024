@@ -16,7 +16,7 @@ struct ControllerMessage {
     DPadReading dPad;
     bool buttonL;
     bool buttonR;
-    std::vector<TouchReading> touchPoints;
+    TouchReading touchPoint;
 
     void print();
     bool operator==(const ControllerMessage& other);

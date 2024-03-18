@@ -10,23 +10,16 @@ void ControllerMessage::print() {
     Serial.printf("dPad:\n");  dPad.print(1);
     Serial.printf("buttonL: %s\n", buttonL);
     Serial.printf("buttonR: %s\n", buttonR);
-    Serial.printf("touchPoints:\n"); 
-    for (uint8_t i = 0; i < touchPoints.size(); ++i) {
-        touchPoints[i].print(1);
-    }
+    Serial.printf("touchPoint:\n"); touchPoint.print(1);
 } 
 
 bool ControllerMessage::operator==(const ControllerMessage& other) {
-    for (uint8_t i=0; i < touchPoints.size(); i++) {
-        if (!(touchPoints[i] == other.touchPoints[i])) {
-            return false;
-        }
-    }
     return joystick1 == other.joystick1 &&
            joystick2 == other.joystick2 &&
            dPad == other.dPad &&
            buttonL == other.buttonL &&
-           buttonR == other.buttonR;
+           buttonR == other.buttonR &&
+           touchPoint == other.touchPoint;
 }
 
 void RobotMessage::print() {
