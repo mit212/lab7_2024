@@ -45,9 +45,6 @@ void loop() {
         controllerMessage.touchPoint = display.read();
         
         if (!(prevControllerMessage == controllerMessage)) {
-            // update display
-            // display.clear();
-            // display.drawControllerMessage(controllerMessage);
             sendControllerData();
             prevControllerMessage = controllerMessage;
         }
