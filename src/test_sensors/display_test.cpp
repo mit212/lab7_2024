@@ -7,6 +7,8 @@
 #define TFT_CS_PIN 12
 #define TFT_DC_PIN 13
 
+// TODO: This code is not validated.
+
 Display display(TFT_CS_PIN, TFT_DC_PIN);
 
 void setup() {
