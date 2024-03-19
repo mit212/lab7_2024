@@ -4,11 +4,15 @@
 #include "EncoderVelocity.h"
 #include "PID.h"
 #include "util.h"
-#include "motor_velocity_control.h"
+
+#define Kp 0.25
+#define Ki 0.01
+#define Kd 0
+#define pidTau 0.1
 
 MotorDriver motor(A_DIR1, A_PWM1, 0);
 EncoderVelocity encoder(ENCODER1_A_PIN, ENCODER1_B_PIN, CPR_312_RPM, 0.2);
-PID pid(Kp, Ki, Kd, 0, tau, false);
+PID pid(Kp, Ki, Kd, 0, pidTau, false);
 
 double setpoint = 0;
 double velocity = 0;
