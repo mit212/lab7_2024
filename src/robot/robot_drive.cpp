@@ -13,8 +13,8 @@ EncoderVelocity encoders[NUM_MOTORS] = { {ENCODER1_A_PIN, ENCODER1_B_PIN, CPR_31
                                          {ENCODER3_A_PIN, ENCODER3_B_PIN, CPR_312_RPM, 0.2}, 
                                          {ENCODER4_A_PIN, ENCODER4_B_PIN, CPR_312_RPM, 0.2} };
 
-PID pids[NUM_MOTORS] = { {Kp, Ki, Kd, 0, tau, false}, {Kp, Ki, Kd, 0, tau, false}, 
-                         {Kp, Ki, Kd, 0, tau, false}, {Kp, Ki, Kd, 0, tau, false} };
+PID pids[NUM_MOTORS] = { {Kp, Ki, Kd, 0, pidTau, false}, {Kp, Ki, Kd, 0, pidTau, false}, 
+                         {Kp, Ki, Kd, 0, pidTau, false}, {Kp, Ki, Kd, 0, pidTau, false} };
 
 double setpoints[NUM_MOTORS] = {0, 0, 0, 0};
 double velocities[NUM_MOTORS] = {0, 0, 0, 0};
@@ -25,11 +25,11 @@ void setupDrive(){
         motors[i].setup();
 }
 
-void updateSetpoints(double forward, double turn) {
-    setpoints[0] = forward + turn;
-    setpoints[1] = forward - turn;
-    setpoints[2] = forward + turn;
-    setpoints[3] = forward - turn;
+void updateSetpoints(double left, double right) {
+    setpoints[0] = left;
+    setpoints[1] = right;
+    setpoints[2] = left;
+    setpoints[3] = right;
 }
 
 void updatePIDs() {
