@@ -36,8 +36,8 @@ void followTrajectory() {
 
     #ifdef JOYSTICK
     if (freshWirelessData) {
-        double forward = mapDouble(controllerMessage.joystick1.x, 0.0, 4096.0, -MAX_FORWARD, MAX_FORWARD);
-        double turn = mapDouble(controllerMessage.joystick1.y, 0.0, 4096.0, -MAX_TURN, MAX_TURN);
+        double forward = abs(controllerMessage.joystick1.y) < 0.1 ? 0 : mapDouble(controllerMessage.joystick1.y, -1, 1, -MAX_FORWARD, MAX_FORWARD);
+        double turn = abs(controllerMessage.joystick1.x) < 0.1 ? 0 : mapDouble(controllerMessage.joystick1.x, -1, 1, -MAX_TURN, MAX_TURN);
         updateSetpoints(forward + turn, forward - turn);
     }
     #endif 
@@ -107,7 +107,7 @@ void followTrajectory() {
 void updateOdometry() {
     // take angles from traction wheels only since they don't slip
     currPhiL = encoders[2].getPosition();
-    currPhiR = encoders[3].getPosition();
+    currPhiR = -encoders[3].getPosition();
     
     double dPhiL = currPhiL - prevPhiL;
     double dPhiR = currPhiR - prevPhiR;

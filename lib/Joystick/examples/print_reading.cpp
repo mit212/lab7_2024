@@ -2,7 +2,7 @@
 #include "util.h"
 #include <Arduino.h>
 
-#define PRINT_DELAY 250
+#define PRINT_DELAY 100
 
 #define X_PIN A2
 #define Y_PIN A3

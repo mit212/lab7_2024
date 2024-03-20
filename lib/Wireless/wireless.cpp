@@ -25,9 +25,9 @@ bool ControllerMessage::operator==(const ControllerMessage& other) {
 void RobotMessage::print() {
     Serial.print("Robot Message\n");
     Serial.printf("millis: %d\n", millis);
-    Serial.printf("x:\n", x);
-    Serial.printf("y:\n", y);
-    Serial.printf("theta:\n", theta);
+    Serial.printf("x: %.2f\n", x);
+    Serial.printf("y: %.2f\n", y);
+    Serial.printf("theta: %.2f\n", theta);
 } 
 
 bool RobotMessage::operator==(const RobotMessage& other) {
