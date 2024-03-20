@@ -11,14 +11,10 @@
 ControllerMessage controllerMessage;
 
 Joystick joystick1(JOYSTICK1_X_PIN, JOYSTICK1_Y_PIN);
-Joystick joystick2(JOYSTICK2_X_PIN, JOYSTICK2_Y_PIN);
 
 void setup() {
     Serial.begin(115200);
-
     joystick1.setup();
-    joystick2.setup();
-
     Serial.println("Setup complete.");
 }
 
@@ -27,6 +23,5 @@ void loop() {
     EVERY_N_MILLIS(PRINT_DELAY) {
         controllerMessage.millis = millis();
         controllerMessage.joystick1 = joystick1.read(true);
-        controllerMessage.joystick2 = joystick2.read(true);
     }
 }
