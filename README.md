@@ -47,7 +47,7 @@ Open `robot_motion_control.cpp` and read through `updateOdometry()`. Make sure t
 
 ### 1.3 U-Turn
 
-Make sure your PlatformIO environment is set to be `env:robot` and upload the code to the microcontroller on your mobile robot. Set it on the ground, power it on, and press `RST`. Your robot should now autonomously follow a U-Turn!
+Make sure your PlatformIO environment is set to be `env:robot` and upload the code to the microcontroller on your mobile robot. Once the code has finished uploading, unplug the robot from your computer, set it on the ground, power it on, and press `RST`. Your robot should now autonomously follow a U-Turn!
 
 ### 1.4 Circle
 
