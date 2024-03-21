@@ -16,7 +16,7 @@ Spring 2024[^1]
   - [2.2 Get Controller MAC Address](#22-get-controller-mac-address)
   - [2.3 Validate Controller](#23-validate-controller)
   - [2.4 Run Controller](#24-run-controller)
-  - [2.2 Run Joystick Control](#22-run-joystick-control)
+  - [2.5 Run Joystick Control](#25-run-joystick-control)
 - [3 Custom Trajectory](#3-custom-trajectory)
 - [4 Feedback Form](#4-feedback-form)
 - [5 Optional Extensions](#5-optional-extensions)
@@ -32,7 +32,7 @@ We have already written most of the code for this lab. We hope that you will use
 ### 1.1 Understand `robot/`
 
 Take some time to understand `robot_main.cpp`, `robot_drive.cpp`, `robot_motion_control.cpp`, and `robot_wireless.cpp`. At a high level:
-- `robot_main.cpp`: Includes the `setup()` and `loop()` functions, telling the microcontroller exactly what to do when.
+- `robot_main.cpp`: Includes the `setup()` and `loop()` functions, telling the microcontroller exactly what to do and when.
 - `robot_drive.cpp`: Sets up the motors and implements a PI controller to follow velocity setpoints.
 - `robot_motion_control.cpp`: Calculates odometry and setpoints based on either joystick or a given trajectory.
 - `robot_wireless.cpp`: Sets up two-way wireless communication with and send messages to the microcontroller on your controller.
@@ -82,7 +82,7 @@ Run `src/test_controller/controller_test.cpp`. You should see joystick readings 
 
 Upload `controller_main.cpp` and `controller_wireless.cpp` to the microcontroller on your controller. This will read the joystick and set up two-way wireless communication with the microcontoller on the mobile robot.
 
-### 2.2 Run Joystick Control
+### 2.5 Run Joystick Control
 
 In `robot_motion_control.cpp`, comment out `#define CIRCLE` and uncomment `#define JOYSTICK`. This will change the `followTrajectory()` function to follow a joystick instead of a circle. 
 
